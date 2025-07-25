@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
