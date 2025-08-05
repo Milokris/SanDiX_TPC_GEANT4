@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.icc": "cpp",
+        "colorf": "cpp",
+        "map": "cpp"
+    }
+}

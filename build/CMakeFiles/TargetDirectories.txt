@@ -1,0 +1,4 @@
+/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles/xenon.dir
+/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles/Xenon_Simulation.dir
+/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles/edit_cache.dir
+/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles/rebuild_cache.dir
