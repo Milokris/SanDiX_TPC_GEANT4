@@ -6,6 +6,8 @@
 #include "G4SystemOfUnits.hh"
 #include "G4ios.hh"
 #include <cmath>
+#include "nestFile.hh"
+#include "NEST.hh"
 
 class ElectricField2 : public G4ElectroMagneticField
 {
@@ -15,6 +17,7 @@ public:
 
     virtual void GetFieldValue(const G4double Point[4], G4double *field) const override;
     virtual G4bool DoesFieldChangeEnergy() const override;
+
 };
 
 #endif

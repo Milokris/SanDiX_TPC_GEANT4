@@ -27,10 +27,15 @@
 #include "G4ProductionCuts.hh"
 #include "G4Region.hh"
 #include "G4UserLimits.hh"
-
+#include "DynamicUserLimits.hh"
+#include "FastS2Model.hh"
+#include "G4FastSimulationManager.hh"
+#include "G4OpticalSurface.hh"
+#include "G4LogicalSkinSurface.hh"
+#include "G4LogicalBorderSurface.hh"
+#include "G4PhysicalConstants.hh"
 
 extern nestPart *nestDetector;
-const double pi = 3.14159265;
 class MyDetectorConstruction : public G4VUserDetectorConstruction
 {
 public:

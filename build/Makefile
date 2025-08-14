@@ -166,6 +166,30 @@ ElectricField.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/xenon.dir/build.make CMakeFiles/xenon.dir/ElectricField.cc.s
 .PHONY : ElectricField.cc.s
 
+FastS2Model.o: FastS2Model.cc.o
+.PHONY : FastS2Model.o
+
+# target to build an object file
+FastS2Model.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/xenon.dir/build.make CMakeFiles/xenon.dir/FastS2Model.cc.o
+.PHONY : FastS2Model.cc.o
+
+FastS2Model.i: FastS2Model.cc.i
+.PHONY : FastS2Model.i
+
+# target to preprocess a source file
+FastS2Model.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/xenon.dir/build.make CMakeFiles/xenon.dir/FastS2Model.cc.i
+.PHONY : FastS2Model.cc.i
+
+FastS2Model.s: FastS2Model.cc.s
+.PHONY : FastS2Model.s
+
+# target to generate assembly for a file
+FastS2Model.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/xenon.dir/build.make CMakeFiles/xenon.dir/FastS2Model.cc.s
+.PHONY : FastS2Model.cc.s
+
 action.o: action.cc.o
 .PHONY : action.o
 
@@ -467,6 +491,9 @@ help:
 	@echo "... ElectricField.o"
 	@echo "... ElectricField.i"
 	@echo "... ElectricField.s"
+	@echo "... FastS2Model.o"
+	@echo "... FastS2Model.i"
+	@echo "... FastS2Model.s"
 	@echo "... action.o"
 	@echo "... action.i"
 	@echo "... action.s"

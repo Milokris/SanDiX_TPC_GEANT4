@@ -8,3 +8,4 @@ void MyTrackingAction::PostUserTrackingAction(const G4Track *track)
 	G4int id = track->GetTrackID();
 	fSteppingAction->ClearStagnationData(id);
 }
+

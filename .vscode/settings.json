@@ -2,6 +2,7 @@
     "files.associations": {
         "*.icc": "cpp",
         "colorf": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "new": "cpp"
     }
 }

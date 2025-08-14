@@ -1051,4 +1051,56 @@ CMakeFiles/xenon.dir/physics.cc.o: \
   /usr/local/include/Geant4/G4ProcessVector.hh \
   /usr/local/include/Geant4/G4ProcessVector.icc \
   /usr/local/include/Geant4/G4ProcessManager.icc \
-  /usr/local/include/Geant4/G4EmLowEPPhysics.hh
+  /usr/local/include/Geant4/G4EmLowEPPhysics.hh \
+  /usr/local/include/Geant4/G4EmParameters.hh \
+  /usr/local/include/Geant4/G4MscStepLimitType.hh \
+  /usr/local/include/Geant4/G4NuclearFormfactorType.hh \
+  /usr/local/include/Geant4/G4DNAModelSubType.hh \
+  /usr/local/include/Geant4/G4EmFluoDirectory.hh \
+  /usr/local/include/Geant4/G4EmSaturation.hh \
+  /usr/local/include/Geant4/G4ChemTimeStepModel.hh \
+  /usr/local/include/Geant4/G4eMultipleScattering.hh \
+  /usr/local/include/Geant4/G4VMultipleScattering.hh \
+  /usr/local/include/Geant4/G4VContinuousDiscreteProcess.hh \
+  /usr/local/include/Geant4/G4ParticleChangeForMSC.hh \
+  /usr/local/include/Geant4/G4EmModelManager.hh \
+  /usr/local/include/Geant4/G4EmTableType.hh \
+  /usr/local/include/Geant4/G4EmProcessSubType.hh \
+  /usr/local/include/Geant4/G4VEmModel.hh \
+  /usr/local/include/Geant4/G4VEmFluctuationModel.hh \
+  /usr/local/include/Geant4/G4VEmAngularDistribution.hh \
+  /usr/local/include/Geant4/G4EmElementSelector.hh \
+  /usr/local/include/Geant4/G4PhysicsLogVector.hh \
+  /usr/local/include/Geant4/G4VMscModel.hh \
+  /usr/local/include/Geant4/G4SafetyHelper.hh \
+  /usr/local/include/Geant4/G4Navigator.hh \
+  /usr/local/include/Geant4/G4NormalNavigation.hh \
+  /usr/local/include/Geant4/G4VNavigation.hh \
+  /usr/local/include/Geant4/G4VSolid.hh \
+  /usr/local/include/Geant4/G4VSolid.icc \
+  /usr/local/include/Geant4/G4AuxiliaryNavServices.hh \
+  /usr/local/include/Geant4/G4AuxiliaryNavServices.icc \
+  /usr/local/include/Geant4/G4NormalNavigation.icc \
+  /usr/local/include/Geant4/G4VoxelNavigation.hh \
+  /usr/local/include/Geant4/G4NavigationLogger.hh \
+  /usr/local/include/Geant4/G4BlockingList.hh \
+  /usr/local/include/Geant4/G4BlockingList.icc \
+  /usr/local/include/Geant4/G4SmartVoxelProxy.hh \
+  /usr/local/include/Geant4/G4SmartVoxelProxy.icc \
+  /usr/local/include/Geant4/G4SmartVoxelNode.hh \
+  /usr/local/include/Geant4/G4SmartVoxelNode.icc \
+  /usr/local/include/Geant4/G4SmartVoxelHeader.hh \
+  /usr/local/include/Geant4/G4SmartVoxelHeader.icc \
+  /usr/local/include/Geant4/G4VoxelNavigation.icc \
+  /usr/local/include/Geant4/G4ParameterisedNavigation.hh \
+  /usr/local/include/Geant4/G4VPVParameterisation.hh \
+  /usr/local/include/Geant4/G4VVolumeMaterialScanner.hh \
+  /usr/local/include/Geant4/G4ParameterisedNavigation.icc \
+  /usr/local/include/Geant4/G4ReplicaNavigation.hh \
+  /usr/local/include/Geant4/G4ReplicaNavigation.icc \
+  /usr/local/include/Geant4/G4RegularNavigation.hh \
+  /usr/local/include/Geant4/G4VExternalNavigation.hh \
+  /usr/local/include/Geant4/G4Navigator.icc \
+  /usr/local/include/Geant4/G4UrbanMscModel.hh \
+  /usr/local/include/Geant4/G4Exp.hh \
+  /usr/local/include/Geant4/G4Electron.hh

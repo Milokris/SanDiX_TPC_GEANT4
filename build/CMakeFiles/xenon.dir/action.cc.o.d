@@ -941,16 +941,6 @@ CMakeFiles/xenon.dir/action.cc.o: \
   /usr/local/include/Geant4/G4GenericFileManager.hh \
   /usr/local/include/Geant4/G4GenericFileManager.icc \
   /Users/milokris/Documents/geant4-v11.3-2.2/xenon/event.hh \
-  /usr/local/include/Geant4/G4UserEventAction.hh \
-  /usr/local/include/Geant4/G4Event.hh \
-  /usr/local/include/Geant4/evtdefs.hh \
-  /usr/local/include/Geant4/G4HCofThisEvent.hh \
-  /usr/local/include/Geant4/G4VHitsCollection.hh \
-  /usr/local/include/Geant4/G4DCofThisEvent.hh \
-  /usr/local/include/Geant4/G4VDigiCollection.hh \
-  /usr/local/include/Geant4/G4TrajectoryContainer.hh \
-  /usr/local/include/Geant4/G4VTrajectory.hh \
-  /usr/local/include/Geant4/G4VUserEventInformation.hh \
   /Users/milokris/Documents/geant4-v11.3-2.2/xenon/stepping.hh \
   /usr/local/include/Geant4/G4UserSteppingAction.hh \
   /usr/local/include/Geant4/G4Step.hh \
@@ -1041,6 +1031,15 @@ CMakeFiles/xenon.dir/action.cc.o: \
   /usr/local/include/Geant4/G4PhysicsModelCatalog.hh \
   /usr/local/include/Geant4/G4Track.icc \
   /usr/local/include/Geant4/G4RunManager.hh \
+  /usr/local/include/Geant4/G4Event.hh \
+  /usr/local/include/Geant4/evtdefs.hh \
+  /usr/local/include/Geant4/G4HCofThisEvent.hh \
+  /usr/local/include/Geant4/G4VHitsCollection.hh \
+  /usr/local/include/Geant4/G4DCofThisEvent.hh \
+  /usr/local/include/Geant4/G4VDigiCollection.hh \
+  /usr/local/include/Geant4/G4TrajectoryContainer.hh \
+  /usr/local/include/Geant4/G4VTrajectory.hh \
+  /usr/local/include/Geant4/G4VUserEventInformation.hh \
   /usr/local/include/Geant4/G4EventManager.hh \
   /usr/local/include/Geant4/G4StackManager.hh \
   /usr/local/include/Geant4/G4UserStackingAction.hh \
@@ -1220,20 +1219,8 @@ CMakeFiles/xenon.dir/action.cc.o: \
   /usr/local/include/Geant4/G4VSDFilter.hh \
   /usr/local/include/Geant4/G4OpticalPhoton.hh \
   /Users/milokris/Documents/geant4-v11.3-2.2/xenon/electricField2.hh \
-  /usr/local/include/Geant4/G4DormandPrince745.hh \
-  /usr/local/include/Geant4/G4TransportationManager.hh \
-  /usr/local/include/Geant4/G4SafetyHelper.hh \
-  /usr/local/include/Geant4/G4TransportationManager.icc \
   /Users/milokris/Documents/geant4-v11.3-2.2/xenon/nestFile.hh \
   /Users/milokris/Documents/nest/include/Detectors/VDetector.hh \
-  /usr/local/include/Geant4/G4ProductionCuts.hh \
-  /usr/local/include/Geant4/G4UserLimits.hh \
-  /usr/local/include/Geant4/G4UserLimits.icc \
-  /Users/milokris/Documents/geant4-v11.3-2.2/xenon/tracking.hh \
-  /usr/local/include/Geant4/G4Electron.hh \
-  /usr/local/include/Geant4/G4Neutron.hh \
-  /usr/local/include/Geant4/G4Ions.hh \
-  /usr/local/include/Geant4/G4Gamma.hh \
   /Users/milokris/Documents/nest/include/NEST/NEST.hh \
   /Users/milokris/Documents/nest/include/NEST/RandomGen.hh \
   /Users/milokris/Documents/nest/include/NEST/xoroshiro.hh \
@@ -1360,4 +1347,133 @@ CMakeFiles/xenon.dir/action.cc.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/float.h \
   /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include/float.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/float.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/cassert \
+  /usr/local/include/Geant4/G4DormandPrince745.hh \
+  /usr/local/include/Geant4/G4TransportationManager.hh \
+  /usr/local/include/Geant4/G4SafetyHelper.hh \
+  /usr/local/include/Geant4/G4TransportationManager.icc \
+  /usr/local/include/Geant4/G4ProductionCuts.hh \
+  /usr/local/include/Geant4/G4UserLimits.hh \
+  /usr/local/include/Geant4/G4UserLimits.icc \
+  /Users/milokris/Documents/geant4-v11.3-2.2/xenon/DynamicUserLimits.hh \
+  /usr/local/include/Geant4/G4Electron.hh \
+  /usr/local/include/Geant4/G4ParticleTypes.hh \
+  /usr/local/include/Geant4/G4ChargedGeantino.hh \
+  /usr/local/include/Geant4/G4Geantino.hh \
+  /usr/local/include/Geant4/G4Gamma.hh \
+  /usr/local/include/Geant4/G4UnknownParticle.hh \
+  /usr/local/include/Geant4/G4ChargedUnknownParticle.hh \
+  /usr/local/include/Geant4/G4MuonPlus.hh \
+  /usr/local/include/Geant4/G4MuonMinus.hh \
+  /usr/local/include/Geant4/G4TauMinus.hh \
+  /usr/local/include/Geant4/G4TauPlus.hh \
+  /usr/local/include/Geant4/G4Positron.hh \
+  /usr/local/include/Geant4/G4NeutrinoTau.hh \
+  /usr/local/include/Geant4/G4AntiNeutrinoTau.hh \
+  /usr/local/include/Geant4/G4NeutrinoMu.hh \
+  /usr/local/include/Geant4/G4AntiNeutrinoMu.hh \
+  /usr/local/include/Geant4/G4NeutrinoE.hh \
+  /usr/local/include/Geant4/G4AntiNeutrinoE.hh \
+  /usr/local/include/Geant4/G4PionPlus.hh \
+  /usr/local/include/Geant4/G4PionMinus.hh \
+  /usr/local/include/Geant4/G4PionZero.hh \
+  /usr/local/include/Geant4/G4Eta.hh \
+  /usr/local/include/Geant4/G4EtaPrime.hh \
+  /usr/local/include/Geant4/G4KaonPlus.hh \
+  /usr/local/include/Geant4/G4KaonMinus.hh \
+  /usr/local/include/Geant4/G4KaonZero.hh \
+  /usr/local/include/Geant4/G4AntiKaonZero.hh \
+  /usr/local/include/Geant4/G4KaonZeroLong.hh \
+  /usr/local/include/Geant4/G4KaonZeroShort.hh \
+  /usr/local/include/Geant4/G4DMesonPlus.hh \
+  /usr/local/include/Geant4/G4DMesonMinus.hh \
+  /usr/local/include/Geant4/G4DMesonZero.hh \
+  /usr/local/include/Geant4/G4AntiDMesonZero.hh \
+  /usr/local/include/Geant4/G4DsMesonPlus.hh \
+  /usr/local/include/Geant4/G4DsMesonMinus.hh \
+  /usr/local/include/Geant4/G4JPsi.hh \
+  /usr/local/include/Geant4/G4Etac.hh \
+  /usr/local/include/Geant4/G4BMesonPlus.hh \
+  /usr/local/include/Geant4/G4BMesonMinus.hh \
+  /usr/local/include/Geant4/G4BMesonZero.hh \
+  /usr/local/include/Geant4/G4AntiBMesonZero.hh \
+  /usr/local/include/Geant4/G4BsMesonZero.hh \
+  /usr/local/include/Geant4/G4AntiBsMesonZero.hh \
+  /usr/local/include/Geant4/G4Upsilon.hh \
+  /usr/local/include/Geant4/G4Proton.hh \
+  /usr/local/include/Geant4/G4Ions.hh \
+  /usr/local/include/Geant4/G4AntiProton.hh \
+  /usr/local/include/Geant4/G4Neutron.hh \
+  /usr/local/include/Geant4/G4AntiNeutron.hh \
+  /usr/local/include/Geant4/G4Lambda.hh \
+  /usr/local/include/Geant4/G4SigmaPlus.hh \
+  /usr/local/include/Geant4/G4SigmaZero.hh \
+  /usr/local/include/Geant4/G4SigmaMinus.hh \
+  /usr/local/include/Geant4/G4XiMinus.hh \
+  /usr/local/include/Geant4/G4XiZero.hh \
+  /usr/local/include/Geant4/G4OmegaMinus.hh \
+  /usr/local/include/Geant4/G4AntiLambda.hh \
+  /usr/local/include/Geant4/G4AntiSigmaPlus.hh \
+  /usr/local/include/Geant4/G4AntiSigmaZero.hh \
+  /usr/local/include/Geant4/G4AntiSigmaMinus.hh \
+  /usr/local/include/Geant4/G4AntiXiMinus.hh \
+  /usr/local/include/Geant4/G4AntiXiZero.hh \
+  /usr/local/include/Geant4/G4AntiOmegaMinus.hh \
+  /usr/local/include/Geant4/G4LambdacPlus.hh \
+  /usr/local/include/Geant4/G4SigmacPlusPlus.hh \
+  /usr/local/include/Geant4/G4SigmacPlus.hh \
+  /usr/local/include/Geant4/G4SigmacZero.hh \
+  /usr/local/include/Geant4/G4XicPlus.hh \
+  /usr/local/include/Geant4/G4XicZero.hh \
+  /usr/local/include/Geant4/G4OmegacZero.hh \
+  /usr/local/include/Geant4/G4AntiLambdacPlus.hh \
+  /usr/local/include/Geant4/G4AntiSigmacPlusPlus.hh \
+  /usr/local/include/Geant4/G4AntiSigmacPlus.hh \
+  /usr/local/include/Geant4/G4AntiSigmacZero.hh \
+  /usr/local/include/Geant4/G4AntiXicPlus.hh \
+  /usr/local/include/Geant4/G4AntiXicZero.hh \
+  /usr/local/include/Geant4/G4AntiOmegacZero.hh \
+  /usr/local/include/Geant4/G4Lambdab.hh \
+  /usr/local/include/Geant4/G4SigmabPlus.hh \
+  /usr/local/include/Geant4/G4SigmabZero.hh \
+  /usr/local/include/Geant4/G4SigmabMinus.hh \
+  /usr/local/include/Geant4/G4XibZero.hh \
+  /usr/local/include/Geant4/G4XibMinus.hh \
+  /usr/local/include/Geant4/G4OmegabMinus.hh \
+  /usr/local/include/Geant4/G4AntiLambdab.hh \
+  /usr/local/include/Geant4/G4AntiSigmabPlus.hh \
+  /usr/local/include/Geant4/G4AntiSigmabZero.hh \
+  /usr/local/include/Geant4/G4AntiSigmabMinus.hh \
+  /usr/local/include/Geant4/G4AntiXibZero.hh \
+  /usr/local/include/Geant4/G4AntiXibMinus.hh \
+  /usr/local/include/Geant4/G4AntiOmegabMinus.hh \
+  /usr/local/include/Geant4/G4Alpha.hh \
+  /usr/local/include/Geant4/G4Deuteron.hh \
+  /usr/local/include/Geant4/G4He3.hh \
+  /usr/local/include/Geant4/G4Triton.hh \
+  /usr/local/include/Geant4/G4AntiAlpha.hh \
+  /usr/local/include/Geant4/G4AntiDeuteron.hh \
+  /usr/local/include/Geant4/G4AntiHe3.hh \
+  /usr/local/include/Geant4/G4AntiTriton.hh \
+  /usr/local/include/Geant4/G4GenericIon.hh \
+  /Users/milokris/Documents/geant4-v11.3-2.2/xenon/FastS2Model.hh \
+  /usr/local/include/Geant4/G4FastSimulationManager.hh \
+  /usr/local/include/Geant4/G4FastSimulationVector.hh \
+  /usr/local/include/Geant4/G4FastSimulationVector.icc \
+  /usr/local/include/Geant4/G4FastStep.hh \
+  /usr/local/include/Geant4/G4FastTrack.hh \
+  /usr/local/include/Geant4/G4FastStep.icc \
+  /usr/local/include/Geant4/G4VFastSimulationModel.hh \
+  /usr/local/include/Geant4/G4OpticalSurface.hh \
+  /usr/local/include/Geant4/G4Physics2DVector.hh \
+  /usr/local/include/Geant4/G4Physics2DVector.icc \
+  /usr/local/include/Geant4/G4SurfaceProperty.hh \
+  /usr/local/include/Geant4/G4LogicalSkinSurface.hh \
+  /usr/local/include/Geant4/G4LogicalSurface.hh \
+  /usr/local/include/Geant4/G4LogicalSurface.icc \
+  /usr/local/include/Geant4/G4LogicalSkinSurface.icc \
+  /usr/local/include/Geant4/G4LogicalBorderSurface.hh \
+  /usr/local/include/Geant4/G4LogicalBorderSurface.icc \
+  /usr/local/include/Geant4/G4PhysicalConstants.hh \
+  /Users/milokris/Documents/geant4-v11.3-2.2/xenon/tracking.hh \
+  /Users/milokris/Documents/geant4-v11.3-2.2/xenon/DriftElectronInfo.hh

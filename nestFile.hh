@@ -3,6 +3,10 @@
 
 #include "VDetector.hh"  // NEST abstract interface
 
+extern double voltage;
+extern double b;
+extern double a;
+
 class nestPart : public VDetector {
 public:
     nestPart();

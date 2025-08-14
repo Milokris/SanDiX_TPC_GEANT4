@@ -15,6 +15,12 @@
 #include "G4SystemOfUnits.hh"
 #include "G4ProcessManager.hh"
 #include "G4EmLowEPPhysics.hh"
+#include "G4EmParameters.hh"
+#include "G4eMultipleScattering.hh"
+#include "G4UrbanMscModel.hh"
+#include "G4Electron.hh"
+#include "G4OpticalParameters.hh"
+
 
 
 class MyPhysicsList : public G4VModularPhysicsList

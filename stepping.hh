@@ -12,17 +12,24 @@
 #include "construction.hh"
 #include "tracking.hh"
 #include "event.hh"
+#include "run.hh"
 #include "G4Electron.hh"  // For G4Electron definition
 #include "G4Neutron.hh"
 #include "G4OpticalPhoton.hh"
 #include "G4Gamma.hh"
 #include "nestFile.hh"
 #include "NEST.hh"
+#include "DriftElectronInfo.hh"
+#include "DynamicUserLimits.hh"
+#include "G4VProcess.hh"
+#include "CLHEP/Random/RandGaussZiggurat.h"
+
+
 
 class MySteppingAction : public G4UserSteppingAction
 {
 public:
-	MySteppingAction(MyEventAction* eventAction);
+	MySteppingAction(); //MyEventAction* eventAction);
 	~MySteppingAction();
 	
 	virtual void UserSteppingAction(const G4Step*);
@@ -31,7 +38,7 @@ public:
 
 	
 private:
-	MyEventAction *fEventAction;
+	//MyEventAction *fEventAction;
 	
 	std::map<G4int, G4double> previousEnergy ;
 	std::map<G4int, G4int> stagnationCounter;

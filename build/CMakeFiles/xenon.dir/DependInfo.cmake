@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/milokris/Documents/geant4-v11.3-2.2/xenon/ElectricField.cc" "CMakeFiles/xenon.dir/ElectricField.cc.o" "gcc" "CMakeFiles/xenon.dir/ElectricField.cc.o.d"
+  "/Users/milokris/Documents/geant4-v11.3-2.2/xenon/FastS2Model.cc" "CMakeFiles/xenon.dir/FastS2Model.cc.o" "gcc" "CMakeFiles/xenon.dir/FastS2Model.cc.o.d"
   "/Users/milokris/Documents/geant4-v11.3-2.2/xenon/action.cc" "CMakeFiles/xenon.dir/action.cc.o" "gcc" "CMakeFiles/xenon.dir/action.cc.o.d"
   "/Users/milokris/Documents/geant4-v11.3-2.2/xenon/construction.cc" "CMakeFiles/xenon.dir/construction.cc.o" "gcc" "CMakeFiles/xenon.dir/construction.cc.o.d"
   "/Users/milokris/Documents/geant4-v11.3-2.2/xenon/detector.cc" "CMakeFiles/xenon.dir/detector.cc.o" "gcc" "CMakeFiles/xenon.dir/detector.cc.o.d"

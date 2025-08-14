@@ -10,7 +10,7 @@ MyPrimaryGenerator::MyPrimaryGenerator()
     fParticleGun->SetParticleDefinition(particle);
 
     fParticleGun->SetParticleEnergy(0.);  // clear old energy def
-    G4ThreeVector pos(20*mm, 1.*mm, 0.);
+    G4ThreeVector pos(50*mm, 10.*mm, 0.);
     G4ThreeVector mom(-1., 0., 0.);
     fParticleGun->SetParticlePosition(pos);
     fParticleGun->SetParticleMomentumDirection(mom);
