@@ -9,30 +9,30 @@ MySteppingAction::MySteppingAction() //MyEventAction *eventAction)
 MySteppingAction::~MySteppingAction()
 {}
 
-namespace 
-{
-    G4ThreeVector RandomUnitVector() 
-	{
-        double costheta = 2.*G4UniformRand() - 1.;
-        double sintheta = std::sqrt(1. - costheta*costheta);
-        double phi = 2.*CLHEP::pi*G4UniformRand();
-        return G4ThreeVector(sintheta*cos(phi), sintheta*sin(phi), costheta);
-    }
-}
+// namespace 
+// {
+//     G4ThreeVector RandomUnitVector() 
+// 	{
+//         double costheta = 2.*G4UniformRand() - 1.;
+//         double sintheta = std::sqrt(1. - costheta*costheta);
+//         double phi = 2.*CLHEP::pi*G4UniformRand();
+//         return G4ThreeVector(sintheta*cos(phi), sintheta*sin(phi), costheta);
+//     }
+// }
 
-namespace
-{
-	G4double SampleLXePhotonEnergy_GaussEnergy() 
-	{
-  		const double mean_eV  = 1239.8419843320026/178.0; // ~6.966 eV
-  		const double sigma_eV = 0.20;                     // from conversion above
-  		double E_eV = CLHEP::RandGauss::shoot(mean_eV, sigma_eV);
-  		if (E_eV < 6.5) E_eV = 6.5;                       // trim tails to your grid
-  		if (E_eV > 8.2) E_eV = 8.2;
-  		return E_eV*eV;
-	}
+// namespace
+// {
+// 	G4double SampleLXePhotonEnergy_GaussEnergy() 
+// 	{
+//   		const double mean_eV  = 1239.8419843320026/178.0; // ~6.966 eV
+//   		const double sigma_eV = 0.20;                     // from conversion above
+//   		double E_eV = CLHEP::RandGauss::shoot(mean_eV, sigma_eV);
+//   		if (E_eV < 6.5) E_eV = 6.5;                       // trim tails to your grid
+//   		if (E_eV > 8.2) E_eV = 8.2;
+//   		return E_eV*eV;
+// 	}
 
-}
+// }
 
 void MySteppingAction::ClearStagnationData(G4int trackID)
 {
@@ -46,12 +46,17 @@ int nS2Events = 0;
 int totalS1Photons = 0;
 int totalS2Photons = 0;
 double ElThreshold = 412000.0;    //412000.0; //Literature says proportional Electroluminescense starts at 412 kV/cm
-double gainArea = voltage / ((ElThreshold / 10) * std::log(b/a)); //   0.015; //in mm so ~15 microns
+double gainArea = voltage / ((ElThreshold) * std::log(b/a)); //   0.015; //in mm so ~15 microns
 G4double lastStep = 10000.*mm;
 int photPerE = 30;
+G4ThreadLocal std::unordered_set<G4int> DriftTrackIDs;
+
 
 void MySteppingAction::UserSteppingAction(const G4Step *step)
 {		
+
+	//G4cout << "Stepping gainArea: " << gainArea << G4endl;
+	
 	// Prevent runaway memory usage
 	const size_t maxMapSize = 10000;
 	if (previousEnergy.size() > maxMapSize) 
@@ -68,7 +73,9 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
 
     // Get position of interaction
     G4ThreeVector pos = step->GetPreStepPoint()->GetPosition();
-	double r = std::sqrt(pos.x()/mm * pos.x()/mm + pos.y()/mm * pos.y()/mm);
+	G4ThreeVector dir = step->GetPreStepPoint()->GetMomentumDirection();
+
+	//double r = std::sqrt(pos.x()/mm * pos.x()/mm + pos.y()/mm * pos.y()/mm);
 	const MyDetectorConstruction *detectorConstruction = static_cast<const MyDetectorConstruction*> (G4RunManager::GetRunManager()->GetUserDetectorConstruction());
 	
 	G4LogicalVolume *fScoringVolume = detectorConstruction->GetScoringVolume();
@@ -77,6 +84,7 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
 	G4int id = track->GetTrackID();
 	G4double energy = track->GetKineticEnergy();
 	const G4ParticleDefinition* pd = track->GetParticleDefinition();
+	auto incidentParticle = pd->GetParticleName();
 	G4double edep = step->GetTotalEnergyDeposit() / keV;
 	static std::map<G4int, G4double> previousEnergy;
 	static std::map<G4int, int> stagnationCounter;
@@ -86,15 +94,92 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
 	bool driftElectron = false;
 	auto info = dynamic_cast<DriftElectronInfo*>(track->GetUserInformation());
     double Efield = nestDetector->get_ElectricField(pos.x() / cm, pos.y() / cm, pos.z() / cm);
+	double x = pos.x() / cm;
+	double y = pos.y() / cm;
+	double z = pos.z() / cm;
+	double r_unit = std::sqrt(x*x + y*y + z*z);
+	double x_unit = (r_unit > 0 ? x / r_unit : 0.);
+	double y_unit = (r_unit > 0 ? y / r_unit : 0.);
+	double z_unit = (r_unit > 0 ? z / r_unit : 0.);
+	double r_E = std::sqrt(x*x + y*y);
+	double x_E = (r_E > 0 ? x / r_E : 0.);
+    double y_E = (r_E > 0 ? y / r_E : 0.);
 	G4double stepLength = step->GetStepLength();
 	G4double nPhotons = 0;
 	G4double nElectrons = 0;
+	double density = 3.0558; //3.0558*g/cm3
+	double temp = 162; //162 Kelvin
+	double pressure = 1; //1 Bar (atmospheric pressure)
+	static nestPart detector;
+	static NEST::NESTcalc nestCalc(&detector);
+	G4int parentID = track->GetParentID();
+    G4int trackID = track->GetTrackID();
+	
+	// if (info && info->IsDrift())
+	// {
+	// 	G4cout << "track id: " << trackID << " Is drift electron!!!" << G4endl;
+	// }
+	// else
+	// {
+	// 	G4cout << "track id: " << trackID << G4endl;
+	// }
+	
+	// G4cout << "parent id: " << parentID << G4endl;
+
+    // If parent is in the drift list, this is a descendant
+    if (DriftTrackIDs.count(parentID))
+    {
+        // add this track to the list for future checks
+        DriftTrackIDs.insert(trackID);
+
+        // kill it
+        track->SetTrackStatus(fStopAndKill);
+        G4cout << "Killed track " << trackID << " from drift parent " << parentID << G4endl;
+        return;
+    }
 
 
-    if (info && info->IsDrift()) {
-        driftElectron = true;
+    if (info && info->IsDrift()) 
+	{
+        if (volume && volume->GetName() != "logicChamber")
+		{
+			track->SetTrackStatus(fStopAndKill);
+		}
+		return;
+	
+		driftElectron = true;
 		//track->SetKineticEnergy(energy / 1.25);
 		track->SetKineticEnergy(0.1*eV);
+
+
+		//NEW DRIFT MECHANICS!!!!
+
+		// bool highField = (Efield >= 5000.); 
+		// double v_drift = nestCalc.SetDriftVelocity(temp, density, Efield, pressure); // mm/us
+		// double D_T = nestCalc.GetDiffTran_Liquid(Efield, highField, temp, pressure, density, 54); //mm2/us
+		// double D_L = nestCalc.GetDiffLong_Liquid(Efield, highField, temp, pressure, density, 54, 0); //mm2/us
+		// if (v_drift ==0)
+		// {
+		// 	G4cout << "v_drift = 0" << G4endl;
+		// 	return;
+		// }
+		// double dt = stepLength / v_drift;
+
+		// // G4cout << "Electric Field strength is: " << Efield << " V/cm" << G4endl;
+		// // G4cout << "Drift velocity is: " << v_drift << " mm / us" << G4endl;
+		// // G4cout << "Diffusion Transverse: " << D_T << " mm2 / us" << G4endl;
+		// // G4cout << "Diffusion Longitudinal: " << D_L << " mm2 / us" << G4endl;
+
+		// // propagate electron for timestep dt
+		// double newX = x*10 + dir.y()*RandomGaussian(0, sqrt(D_T * dt)) + dir.x()*RandomGaussian(0, sqrt(D_L * dt)) + x_unit*v_drift*dt;
+		// double newY = y*10 + dir.x()*RandomGaussian(0,sqrt(D_T * dt)) + dir.y()*RandomGaussian(0, sqrt(D_L * dt)) + y_unit*v_drift*dt;
+		// double newZ = z*10 + RandomGaussian(0,sqrt(D_T * dt)) + dir.z()*RandomGaussian(0, sqrt(D_L * dt));
+
+
+
+		//posNew = ()
+		
+
     }
 	NEST::INTERACTION_TYPE recoilType = NEST::NoneType;
 
@@ -217,29 +302,32 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
 		previousEnergy[id] = energy;		
 	}
 
-	auto incidentParticle = "No particle interaction information available";
-	if (pd == G4Neutron::NeutronDefinition()) 
+	if (pd == G4Neutron::NeutronDefinition() || pd == G4Proton::ProtonDefinition() || pd->GetParticleType() == "nucleus") 
 	{
  		recoilType = NEST::INTERACTION_TYPE::NR; // Nuclear Recoil
-		incidentParticle = "neutron";
 	}
-	if (pd == G4Electron::ElectronDefinition())
+	else if (pd == G4Alpha::AlphaDefinition() || pd->GetParticleName() == "ion")
 	{
-		recoilType = NEST::INTERACTION_TYPE::beta;
-		incidentParticle = "electron";
+		recoilType = NEST::INTERACTION_TYPE::ion;
 	}
-	if (pd == G4OpticalPhoton::OpticalPhotonDefinition())
+	else if (pd == G4Electron::ElectronDefinition() || pd == G4Positron::PositronDefinition() ||
+			pd->GetParticleType() == "muon" || pd->GetParticleType() == "tau")
+	{
+		//something like get parent ID and then get parent ID of parent ID to make sure no drift electron? but put at the top and kill--
+		//also maybe set energy back to 0.1 eV to get rid of edep stuff messing with it/ or get energy based on velocity?
+		recoilType = NEST::INTERACTION_TYPE::beta;
+	}
+	else if (pd == G4Gamma::GammaDefinition())
+	{
+		recoilType = NEST::INTERACTION_TYPE::gammaRay;
+		return; //Just to see if i can get better S1 and S2 waveforms with no gamma scintillations
+	}
+	else if (pd == G4OpticalPhoton::OpticalPhotonDefinition())
 	{
 		return;
 		recoilType = NEST::INTERACTION_TYPE::gammaRay;
-		incidentParticle =  "optical photon";
 	}
-	if (pd == G4Gamma::GammaDefinition())
-	{
-		recoilType = NEST::INTERACTION_TYPE::gammaRay;
-		incidentParticle =  "gamma";
-		//return; //Just to see if i can get better S1 and S2 waveforms with no gamma scintillations
-	}
+
 
 	//Nest Part
 
@@ -298,10 +386,8 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
 		{
 			// Create NEST object
 			G4cout << "~~~~~~~~~~~~~~~initializing S1 event~~~~~~~~~~~~~~~" << G4endl;
-			static nestPart detector;
-			static NEST::NESTcalc nestCalc(&detector);
 
-			NEST::YieldResult yields = nestCalc.GetYields(recoilType, edep, 3.0558, Efield,          // drift field
+			NEST::YieldResult yields = nestCalc.GetYields(recoilType, edep, density, Efield,          // drift field
 			131.293,                     // A
 			54                           // Z
 			);
@@ -364,9 +450,11 @@ void MySteppingAction::UserSteppingAction(const G4Step *step)
 
         	G4DynamicParticle* dynPart = new G4DynamicParticle(eDef, dir, electronEnergy);
         	G4Track* newTrack = new G4Track(dynPart, track->GetGlobalTime(), pos);
-			newTrack->SetUserInformation(new DriftElectronInfo(true));
+			newTrack->SetUserInformation(new DriftElectronInfo(true, true));
         	newTrack->SetTouchableHandle(track->GetTouchableHandle());
         	newTrack->SetParentID(track->GetTrackID());
+			//G4cout << "Created electron time: " << track->GetGlobalTime() << G4endl;
+			DriftTrackIDs.insert(newTrack->GetTrackID());
 
         	secondaries->push_back(newTrack);
 

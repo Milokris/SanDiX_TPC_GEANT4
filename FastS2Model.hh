@@ -1,41 +1,56 @@
-// #ifndef FAST_S2_MODEL_HH
-// #define FAST_S2_MODEL_HH
+#ifndef FAST_S2_MODEL_HH
+#define FAST_S2_MODEL_HH
 
-// #include "G4VFastSimulationModel.hh"
-// #include "G4Electron.hh"
-// #include "G4OpticalPhoton.hh"
-// #include "DriftElectronInfo.hh"
-// #include "G4ThreeVector.hh"
-// #include "G4Material.hh"
-// #include "G4ParticleTable.hh"
-// #include "globals.hh"
-// #include "Randomize.hh"
-// #include "electricField2.hh"
+#include "G4VFastSimulationModel.hh"
+#include "G4ThreeVector.hh"
+#include "G4FastTrack.hh"
+#include "G4FastStep.hh"
+#include "G4SystemOfUnits.hh"
+#include "Randomize.hh"
+#include "nestFile.hh"
+#include "DriftElectronInfo.hh"
+#include "G4Electron.hh"
+#include "G4OpticalPhoton.hh"
+#include "G4DynamicParticle.hh"
+#include "G4Track.hh"
+#include "G4ParticleDefinition.hh"
+#include "NEST.hh"
+#include "stepping.hh"
+#include "run.hh"
+#include "DynamicUserLimits.hh"
 
 
+class LXeElectronDriftModel : public G4VFastSimulationModel {
+public:
+    LXeElectronDriftModel(const G4String& modelName, G4Region* envelope, nestPart* nptr)
+        : G4VFastSimulationModel(modelName, envelope), nestCalc(nptr) {}
 
-// class FastS2Model : public G4VFastSimulationModel {
-// public:
-//     FastS2Model(const G4String& modelName, G4Region* envelope, ElectricField2* field);
-//     virtual ~FastS2Model();
+    ~LXeElectronDriftModel() override {}
 
-//     // Mandatory overrides
-//     virtual G4bool IsApplicable(const G4ParticleDefinition& particle) override;
-//     virtual G4bool ModelTrigger(const G4FastTrack& fastTrack) override;
-//     virtual void DoIt(const G4FastTrack& fastTrack, G4FastStep& fastStep) override;
+    // --- Corrected function signatures ---
+    G4bool IsApplicable(const G4ParticleDefinition& particle) override {
+        return &particle == G4Electron::ElectronDefinition();
+    }
 
-//     // Configurable parameters
-//     void SetYieldParams(G4double p3, G4double Eth_kVcm) {
-//         fP3 = p3;
-//         fEth_kVcm = Eth_kVcm;
-//     }
-//     void SetStepSize(G4double step_um) { fStep_um = step_um; }
+    G4bool ModelTrigger(const G4FastTrack& fastTrack) override {
+        const DriftElectronInfo* info =
+            dynamic_cast<const DriftElectronInfo*>(fastTrack.GetPrimaryTrack()->GetUserInformation());
+        return info && info->IsDrift();  // <-- use the actual method name in your DriftElectronInfo
+    }
 
-// private:
-//     ElectricField2* fField;
-//     G4double fP3;        // photons/(electron·(kV/cm)·µm)
-//     G4double fEth_kVcm;  // threshold field in kV/cm
-//     G4double fStep_um;   // step size in micrometers
-// };
 
-// #endif
+    void DoIt(const G4FastTrack& fastTrack, G4FastStep& fastStep) override;
+
+private:
+    nestPart* nestCalc;
+
+    bool CheckGainRegion(double x, double y, double z, double Efield) const {
+        return (Efield > ElThreshold);
+    }
+
+    double ElThreshold = 412000.; // set according to your stepping.cc
+    nestPart* nestDetector;  // pointer to the nestPart detector
+
+};
+
+#endif

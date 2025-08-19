@@ -5,7 +5,7 @@ MyPrimaryGenerator::MyPrimaryGenerator()
     fParticleGun = new G4ParticleGun(1);
         
     G4ParticleTable *particleTable = G4ParticleTable::GetParticleTable();
-    G4String particleName = "e-";
+    G4String particleName = "neutron";
     G4ParticleDefinition *particle = particleTable->FindParticle(particleName);
     fParticleGun->SetParticleDefinition(particle);
 

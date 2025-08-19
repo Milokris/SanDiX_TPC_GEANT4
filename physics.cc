@@ -37,8 +37,7 @@ void MyPhysicsList::ConstructProcess()
     while ((*particleIterator)()) 
     {
         G4ParticleDefinition* particle = particleIterator->value();
-        // G4ProcessManager* pManager = particle->GetProcessManager();
-        // G4ProcessVector* processVector = pManager->GetProcessList();
+
 
         if (particle->GetParticleName() == "e-") 
         {
@@ -55,42 +54,13 @@ void MyPhysicsList::ConstructProcess()
                 }
                 if (proc->GetProcessName() == "msc")
                 {
-                    pManager->RemoveProcess(proc);
-                    G4cout << "Removed msc!!!!!!" << G4endl;
-                    // // Construct and configure a new MSC process
-                    // auto* msc = new G4eMultipleScattering();
-                    // auto* model = new G4UrbanMscModel();  // Or try G4GoudsmitSaundersonMscModel()
-
-                    // model->SetStepLimitType(fMinimal);
-                    // //model->SetRangeFactor(0.01);
-                    // //model->SetLateralDisplacement(true);
-                    // model->SetGeomFactor(3.0);
-
-                    // msc->AddEmModel(0, model);
-                    // msc->SetStepLimitType(fMinimal);
-                    // //msc->SetRangeFactor(0.01);
-
-                    // // Add the new MSC back
-                    // pManager->AddProcess(msc, -1, 1, 1);  // ordering: -1 init, 1 along step, 1 post step
-                    // G4cout << "Added custom MSC!" << G4endl;
-                    
+                    //pManager->RemoveProcess(proc);
+                    //G4cout << "Removed msc!!!!!!" << G4endl;
                 }
             }
+            auto* fastSimProc = new G4FastSimulationManagerProcess("fastSimProc");
+            pManager->AddProcess(fastSimProc, -1, -1, 1);
+            G4cout << "Added FastSim process to electron" << G4endl;
         }
-
-
-        // if (!pManager) continue;
-        // for (int i = 0; i < processVector->size(); ++i) 
-        // {
-        //     G4VProcess* proc = (*processVector)[i];
-        //     G4cout << "Particle: " << particle->GetParticleName() << "Process Name: " << proc->GetProcessName() << G4endl;
-
-        //     if (proc->GetProcessName() == "Scintillation") 
-        //     {
-        //         pManager->RemoveProcess(proc);
-        //         G4cout << "Removed scintillation from: " << particle->GetParticleName() << G4endl;
-        //         break;
-        //     }
-        // }
     }
 }

@@ -20,7 +20,11 @@ MyRunAction::~MyRunAction()
 
 void MyRunAction::BeginOfRunAction(const G4Run* run)
 {
-
+    nS1Events = 0;
+    nS2Events = 0;
+    totalS1Photons = 0;
+    totalS2Photons = 0;
+    
     G4AnalysisManager *man = G4AnalysisManager::Instance();
 
     G4int runID = run->GetRunID();
@@ -34,7 +38,8 @@ void MyRunAction::BeginOfRunAction(const G4Run* run)
 
 void MyRunAction::EndOfRunAction(const G4Run*)
 {
-    
+    DriftTrackIDs.clear();
+
 	G4cout << "Number of S1 events: " << nS1Events << G4endl;
 	G4cout << "Number of S2 events: " << nS2Events << G4endl;
 

@@ -34,8 +34,10 @@
 #include "G4LogicalSkinSurface.hh"
 #include "G4LogicalBorderSurface.hh"
 #include "G4PhysicalConstants.hh"
+#include "FastS2Model.hh"
 
 extern nestPart *nestDetector;
+extern nestPart detector;
 class MyDetectorConstruction : public G4VUserDetectorConstruction
 {
 public:

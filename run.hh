@@ -5,6 +5,7 @@
 #include "G4Run.hh"
 
 #include "G4AnalysisManager.hh"
+#include "stepping.hh"
 
 extern int nS1Events;
 extern int nS2Events;

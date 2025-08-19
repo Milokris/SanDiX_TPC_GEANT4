@@ -1,5 +1,8 @@
 #include "construction.hh"
 
+nestPart detector;
+
+
 MyDetectorConstruction::MyDetectorConstruction()
 {}
 
@@ -117,6 +120,10 @@ logicWorld, false, 0, checkOverlaps);
 
     // G4UserLimits* limits = new G4UserLimits(.01*mm);
     logicChamber->SetUserLimits(new DynamicUserLimits(10*mm, 0.1*um)); //min step size 0.1 micron
+
+    G4Region* fastRegion = new G4Region("LXeFastRegion");
+    fastRegion->AddRootLogicalVolume(logicChamber);
+    auto* driftModel = new LXeElectronDriftModel("LXeDriftModel", fastRegion, &detector);
 
 
 //Stainless Steel frame

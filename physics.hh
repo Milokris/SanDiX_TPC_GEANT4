@@ -20,6 +20,7 @@
 #include "G4UrbanMscModel.hh"
 #include "G4Electron.hh"
 #include "G4OpticalParameters.hh"
+#include "G4FastSimulationManagerProcess.hh"
 
 
 

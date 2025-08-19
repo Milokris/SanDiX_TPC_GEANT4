@@ -1103,4 +1103,16 @@ CMakeFiles/xenon.dir/physics.cc.o: \
   /usr/local/include/Geant4/G4Navigator.icc \
   /usr/local/include/Geant4/G4UrbanMscModel.hh \
   /usr/local/include/Geant4/G4Exp.hh \
-  /usr/local/include/Geant4/G4Electron.hh
+  /usr/local/include/Geant4/G4Electron.hh \
+  /usr/local/include/Geant4/G4FastSimulationManagerProcess.hh \
+  /usr/local/include/Geant4/G4FastSimulationManager.hh \
+  /usr/local/include/Geant4/G4FastSimulationVector.hh \
+  /usr/local/include/Geant4/G4FastSimulationVector.icc \
+  /usr/local/include/Geant4/G4FastStep.hh \
+  /usr/local/include/Geant4/G4FastTrack.hh \
+  /usr/local/include/Geant4/G4FastStep.icc \
+  /usr/local/include/Geant4/G4VFastSimulationModel.hh \
+  /usr/local/include/Geant4/G4FastSimulationProcessType.hh \
+  /usr/local/include/Geant4/G4FieldTrack.hh \
+  /usr/local/include/Geant4/G4ChargeState.hh \
+  /usr/local/include/Geant4/G4FieldTrack.icc
