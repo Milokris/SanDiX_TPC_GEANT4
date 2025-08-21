@@ -48,9 +48,6 @@ int main(int argc, char** argv)
 
     G4VisManager *visManager = new G4VisExecutive();
 
-    // G4TrajectoryDrawByParticleID* tdraw = new G4TrajectoryDrawByParticleID();
-    // tdraw->Set("opticalphoton", G4Colour(0.,0.,0.,0.));  // fully transparent
-    // visManager->RegisterModel(tdraw);  
 
     visManager ->Initialize();
 

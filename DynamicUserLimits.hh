@@ -23,13 +23,13 @@ public:
     {
         G4double step = fFarStep;
         auto info = dynamic_cast<DriftElectronInfo*>(track.GetUserInformation());
-        if (track.GetDefinition() == G4Electron::Definition()) //info && info->IsDrift()
+        if (track.GetDefinition() == G4Electron::Definition())
         {
             G4double x = track.GetPosition().x();
             G4double y = track.GetPosition().y();
             G4double dist = std::sqrt(x*x + y*y);
 
-            step = 0.50*(dist - gainArea);  //0.5*(dist - gainArea);
+            step = 0.50*(dist - gainArea); 
         }
         if (step <= fNearStep)
         {

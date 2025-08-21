@@ -5,10 +5,6 @@ void LXeElectronDriftModel::DoIt(const G4FastTrack& fastTrack, G4FastStep& fastS
     G4ThreeVector pos = track->GetPosition();
     G4ThreeVector dir = track->GetMomentumDirection();
 
-    //G4cout << "Fast Sim model electron time: " << fastTrack.GetPrimaryTrack()->GetGlobalTime() << G4endl;
-
-    //G4cout << "Old position: " << pos << G4endl;
-    //G4cout << "Old Direction: " << dir << G4endl;
     static nestPart detector;
 	static NEST::NESTcalc nestCalc(&detector);
 
@@ -22,16 +18,6 @@ void LXeElectronDriftModel::DoIt(const G4FastTrack& fastTrack, G4FastStep& fastS
     double dirX = dir.x();
     double dirY = dir.y();
     double dirZ = dir.z();
-    // G4cout << "dirX: " << dirX << G4endl;
-    // G4cout << "dirY: " << dirY << G4endl;
-    // G4cout << "dirZ: " << dirZ << G4endl;    
-    // double dirR = std::sqrt(dirX*dirX + dirY*dirY + dirZ*dirZ);
-    // double unitDirX = dirX / dirR;
-    // double unitDirY = dirY / dirR;
-    // double unitDirZ = dirZ / dirR;
-    // G4cout << "Unit DirX: " << unitDirX << G4endl;
-    // G4cout << "Unit DirY: " << unitDirY << G4endl;
-    // G4cout << "Unit DirZ: " << unitDirZ << G4endl;
 
     // Electric field
     double Efield = nestDetector->get_ElectricField(x, y, z);
@@ -42,18 +28,15 @@ void LXeElectronDriftModel::DoIt(const G4FastTrack& fastTrack, G4FastStep& fastS
         G4cout << "Killing drift electron outside electric field region" << G4endl;
         return;
     }
-    //G4cout << "Electric Field: " << Efield << G4endl;
     // Check for S2
     if (CheckGainRegion(x, y, z, Efield)) 
     {
-        //G4cout << "Starting S2 Process!!!" << G4endl;
-        int nPhotons = photPerE;
+        int nPhotons = photPerE; //I don't have the real number for this, right now I'm using 30.
         G4ParticleDefinition* photonDef = G4OpticalPhoton::OpticalPhotonDefinition();
         G4TrackVector* secondaries = new G4TrackVector();
 
         for (int i = 0; i < nPhotons; ++i) 
 		{
-            //G4cout << "Creating photons..." << G4endl;
 			G4ThreeVector randDir = RandomUnitVector();
 			G4double photonEnergy = SampleLXePhotonEnergy_GaussEnergy();  
 
@@ -66,29 +49,6 @@ void LXeElectronDriftModel::DoIt(const G4FastTrack& fastTrack, G4FastStep& fastS
             G4DynamicParticle dynPhoton(photonDef, randDir, photonEnergy);
             fastStep.CreateSecondaryTrack(dynPhoton, pol, fastTrack.GetPrimaryTrack()->GetPosition(), 
                 fastTrack.GetPrimaryTrack()->GetGlobalTime(), false);
-
-            //G4cout << "Created photon time: " << fastTrack.GetPrimaryTrack()->GetGlobalTime() << G4endl;
-
-            // // Create a fast-track secondary
-            // G4Track* newTrack = new G4Track(dynPart, fastTrack.GetPrimaryTrack()->GetGlobalTime(),
-            //                                 fastTrack.GetPrimaryTrack()->GetPosition());
-            // newTrack->SetTouchableHandle(fastTrack.GetPrimaryTrack()->GetTouchableHandle());
-
-            // // Push to fast sim secondaries
-            // secondaries->push_back(newTrack);
-            
-            // G4Track* newTrack = fastTrack.CreateSecondary(dynPart, pos, track->GetGlobalTime());
-            // newTrack->SetTouchableHandle(track->GetTouchableHandle());
-            
-			// G4Track* newTrack = new G4Track(dynPart, track->GetGlobalTime(), pos);
-			// newTrack->SetTouchableHandle(track->GetTouchableHandle());
-			// newTrack->SetParentID(track->GetTrackID());
-
-			// secondaries->push_back(newTrack);
-
-			// G4TrackVector* trackSecondaries = const_cast<G4Step*>(step)->GetfSecondary();
-        	// trackSecondaries->insert(trackSecondaries->end(), secondaries->begin(), secondaries->end());
-			// cout << "done creating secondaries" << G4endl;
     	
     	}
         nS2Events++;
@@ -96,7 +56,6 @@ void LXeElectronDriftModel::DoIt(const G4FastTrack& fastTrack, G4FastStep& fastS
 
         fastStep.KillPrimaryTrack();
         fastStep.ProposePrimaryTrackPathLength(0.0);
-        //G4cout << "Killed primary after S2" << G4endl;
         return;
     }
 
@@ -126,10 +85,10 @@ void LXeElectronDriftModel::DoIt(const G4FastTrack& fastTrack, G4FastStep& fastS
         return;
     }
 
-    double farStep = 5.*mm;
-    double nearStep = 0.1*um;
+    double farStep = 5.*mm; //was 5.*mm
+    double nearStep = 0.1*um; //was .1*um
     double stepLength = farStep;
-    stepLength = 0.50*(r - gainArea);  //0.5*(dist - gainArea);
+    stepLength = 0.5*(r - gainArea); 
     if (stepLength <= nearStep)
     {
         stepLength = nearStep;
@@ -138,14 +97,9 @@ void LXeElectronDriftModel::DoIt(const G4FastTrack& fastTrack, G4FastStep& fastS
     {
         stepLength = farStep;
     }
-    // G4cout << "Step Length: " << stepLength << G4endl;
-    // G4cout << "r = " << r << G4endl;
-    // G4cout << "Electric Field: " << Efield << G4endl;
-    // G4cout << "gainArea: " << gainArea << G4endl;
+
 
     double dt = stepLength / v_drift;
-
-    //New WAY
 
     G4ThreeVector driftDir = dir.unit();
     G4ThreeVector v1 = driftDir.orthogonal().unit();
@@ -154,33 +108,9 @@ void LXeElectronDriftModel::DoIt(const G4FastTrack& fastTrack, G4FastStep& fastS
     double sigma_L = sqrt(D_L * dt);
     double sigma_T = sqrt(D_T * dt);
 
-    //G4cout << "Sigma_L " << sigma_L << G4endl;
-    //G4cout << "Sigma_T " << sigma_T << G4endl;
 
     G4ThreeVector diffusion = G4RandGauss::shoot(0., sigma_L) * driftDir + G4RandGauss::shoot(0., sigma_T) * v1 + G4RandGauss::shoot(0., sigma_T) * v2;
     G4ThreeVector newPos = pos + v_drift_dir*v_drift*dt + diffusion*dt;
-    
-    //G4cout << "Diffusion: " << diffusion*dt << G4endl;
-
-    //G4cout << "dt = " << dt << " us" << G4endl;
-
-    double xDiffusion = dirY*G4RandGauss::shoot(0., sqrt(D_T*dt)) + dirX*G4RandGauss::shoot(0., sqrt(D_L*dt));
-    double xDrift = - unitX*v_drift*dt;
-    double yDiffusion = dirX*G4RandGauss::shoot(0., sqrt(D_T*dt)) + dirY*G4RandGauss::shoot(0., sqrt(D_L*dt));
-    double yDrift = - unitY*v_drift*dt;
-    double zDiffusion = G4RandGauss::shoot(0., sqrt(D_T*dt)) + dirZ*G4RandGauss::shoot(0., sqrt(D_L*dt));
-    //G4cout << "xDiffusion: " << xDiffusion << G4endl;
-    //G4cout << "yDiffusion: " << yDiffusion << G4endl;
-    // G4cout << "XDrift: " << xDrift << G4endl;
-    // G4cout << "yDrift: " << yDrift << G4endl;
-    //G4cout << "zDiffusion: " << zDiffusion << G4endl;
-    // G4cout << "Drift direction: " << "( " << xDrift << ", " << yDrift << ")" << G4endl;
-    // G4cout << "Drift speed: " << v_drift << G4endl;
-
-    // Drift + diffusion
-    // double newX = pos.x() + xDrift + xDiffusion;
-    // double newY = pos.y() + yDrift + yDiffusion;         
-    // double newZ = pos.z() + zDiffusion; //diffusion really big for some reason, divided by 10
 
     double newX = newPos.x();
     double newY = newPos.y();        
@@ -189,12 +119,9 @@ void LXeElectronDriftModel::DoIt(const G4FastTrack& fastTrack, G4FastStep& fastS
     double newR = std::sqrt(newX*newX + newY*newY);
     if (newR >= 25. || newZ >= 59. || newZ <= -59.)
     {
-        //G4cout << "New R: " << newR << G4endl;
         fastStep.KillPrimaryTrack();
         fastStep.ProposePrimaryTrackPathLength(0.0);        
     }
-
-    //G4ThreeVector newPos(newX, newY, newZ);
 
 
     double displacementX = newX - pos.x();
@@ -204,20 +131,16 @@ void LXeElectronDriftModel::DoIt(const G4FastTrack& fastTrack, G4FastStep& fastS
     double newDirX = displacementX / newr;
     double newDirY = displacementY / newr;
     double newDirZ = displacementZ / newr;
+
     G4ThreeVector newDir(newDirX, newDirY, newDirZ);
-    //G4cout << "New Direction: " << newDir << G4endl;
-    //G4cout << "New Position: " << newPos << G4endl;
+
 
 
     // Update track
-    //G4cout << "Are we getting here?" << G4endl;
+
     fastStep.ProposePrimaryTrackFinalPosition(newPos);
     fastStep.ProposePrimaryTrackFinalMomentumDirection(newDir);
     fastStep.ProposePrimaryTrackFinalKineticEnergy(track->GetKineticEnergy()); 
     fastStep.ProposePrimaryTrackPathLength(stepLength);
-    fastStep.ProposePrimaryTrackFinalTime(fastTrack.GetPrimaryTrack()->GetGlobalTime() + dt*microsecond);
-
-    //fParticleChange.ProposeGlobalTime(fastTrack.GetPrimaryTrack()->GetGlobalTime() + dt*microsecond);
-   
-
+    fastStep.ProposePrimaryTrackFinalTime(fastTrack.GetPrimaryTrack()->GetGlobalTime() + dt*microsecond);   
 }

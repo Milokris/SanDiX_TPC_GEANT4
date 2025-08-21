@@ -1,6 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/xenon.dir/ElectricField.cc.o"
-  "CMakeFiles/xenon.dir/ElectricField.cc.o.d"
   "CMakeFiles/xenon.dir/FastS2Model.cc.o"
   "CMakeFiles/xenon.dir/FastS2Model.cc.o.d"
   "CMakeFiles/xenon.dir/action.cc.o"

@@ -27,10 +27,6 @@
 
 
 extern int photPerE;
-//extern int totalS1Photons;
-//extern int totalS2Photons;
-//extern int nS1Events;
-//extern int nS2Events;
 extern bool S2Event;
 extern double gainArea;
 extern G4ThreadLocal std::unordered_set<G4int> DriftTrackIDs;

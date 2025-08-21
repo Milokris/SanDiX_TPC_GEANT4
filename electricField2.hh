@@ -17,7 +17,6 @@ public:
 
     virtual void GetFieldValue(const G4double Point[4], G4double *field) const override;
     virtual G4bool DoesFieldChangeEnergy() const override;
-
 };
 
 #endif

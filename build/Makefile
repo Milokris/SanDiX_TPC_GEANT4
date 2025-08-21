@@ -142,30 +142,6 @@ Xenon_Simulation/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Xenon_Simulation.dir/build.make CMakeFiles/Xenon_Simulation.dir/build
 .PHONY : Xenon_Simulation/fast
 
-ElectricField.o: ElectricField.cc.o
-.PHONY : ElectricField.o
-
-# target to build an object file
-ElectricField.cc.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/xenon.dir/build.make CMakeFiles/xenon.dir/ElectricField.cc.o
-.PHONY : ElectricField.cc.o
-
-ElectricField.i: ElectricField.cc.i
-.PHONY : ElectricField.i
-
-# target to preprocess a source file
-ElectricField.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/xenon.dir/build.make CMakeFiles/xenon.dir/ElectricField.cc.i
-.PHONY : ElectricField.cc.i
-
-ElectricField.s: ElectricField.cc.s
-.PHONY : ElectricField.s
-
-# target to generate assembly for a file
-ElectricField.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/xenon.dir/build.make CMakeFiles/xenon.dir/ElectricField.cc.s
-.PHONY : ElectricField.cc.s
-
 FastS2Model.o: FastS2Model.cc.o
 .PHONY : FastS2Model.o
 
@@ -488,9 +464,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... Xenon_Simulation"
 	@echo "... xenon"
-	@echo "... ElectricField.o"
-	@echo "... ElectricField.i"
-	@echo "... ElectricField.s"
 	@echo "... FastS2Model.o"
 	@echo "... FastS2Model.i"
 	@echo "... FastS2Model.s"

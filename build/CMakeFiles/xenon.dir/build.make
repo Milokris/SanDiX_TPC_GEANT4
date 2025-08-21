@@ -86,24 +86,10 @@ CMakeFiles/xenon.dir/xenon.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/xenon.dir/xenon.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/milokris/Documents/geant4-v11.3-2.2/xenon/xenon.cc -o CMakeFiles/xenon.dir/xenon.cc.s
 
-CMakeFiles/xenon.dir/ElectricField.cc.o: CMakeFiles/xenon.dir/flags.make
-CMakeFiles/xenon.dir/ElectricField.cc.o: /Users/milokris/Documents/geant4-v11.3-2.2/xenon/ElectricField.cc
-CMakeFiles/xenon.dir/ElectricField.cc.o: CMakeFiles/xenon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/xenon.dir/ElectricField.cc.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/xenon.dir/ElectricField.cc.o -MF CMakeFiles/xenon.dir/ElectricField.cc.o.d -o CMakeFiles/xenon.dir/ElectricField.cc.o -c /Users/milokris/Documents/geant4-v11.3-2.2/xenon/ElectricField.cc
-
-CMakeFiles/xenon.dir/ElectricField.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/xenon.dir/ElectricField.cc.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/milokris/Documents/geant4-v11.3-2.2/xenon/ElectricField.cc > CMakeFiles/xenon.dir/ElectricField.cc.i
-
-CMakeFiles/xenon.dir/ElectricField.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/xenon.dir/ElectricField.cc.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/milokris/Documents/geant4-v11.3-2.2/xenon/ElectricField.cc -o CMakeFiles/xenon.dir/ElectricField.cc.s
-
 CMakeFiles/xenon.dir/FastS2Model.cc.o: CMakeFiles/xenon.dir/flags.make
 CMakeFiles/xenon.dir/FastS2Model.cc.o: /Users/milokris/Documents/geant4-v11.3-2.2/xenon/FastS2Model.cc
 CMakeFiles/xenon.dir/FastS2Model.cc.o: CMakeFiles/xenon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/xenon.dir/FastS2Model.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/xenon.dir/FastS2Model.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/xenon.dir/FastS2Model.cc.o -MF CMakeFiles/xenon.dir/FastS2Model.cc.o.d -o CMakeFiles/xenon.dir/FastS2Model.cc.o -c /Users/milokris/Documents/geant4-v11.3-2.2/xenon/FastS2Model.cc
 
 CMakeFiles/xenon.dir/FastS2Model.cc.i: cmake_force
@@ -117,7 +103,7 @@ CMakeFiles/xenon.dir/FastS2Model.cc.s: cmake_force
 CMakeFiles/xenon.dir/action.cc.o: CMakeFiles/xenon.dir/flags.make
 CMakeFiles/xenon.dir/action.cc.o: /Users/milokris/Documents/geant4-v11.3-2.2/xenon/action.cc
 CMakeFiles/xenon.dir/action.cc.o: CMakeFiles/xenon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/xenon.dir/action.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/xenon.dir/action.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/xenon.dir/action.cc.o -MF CMakeFiles/xenon.dir/action.cc.o.d -o CMakeFiles/xenon.dir/action.cc.o -c /Users/milokris/Documents/geant4-v11.3-2.2/xenon/action.cc
 
 CMakeFiles/xenon.dir/action.cc.i: cmake_force
@@ -131,7 +117,7 @@ CMakeFiles/xenon.dir/action.cc.s: cmake_force
 CMakeFiles/xenon.dir/construction.cc.o: CMakeFiles/xenon.dir/flags.make
 CMakeFiles/xenon.dir/construction.cc.o: /Users/milokris/Documents/geant4-v11.3-2.2/xenon/construction.cc
 CMakeFiles/xenon.dir/construction.cc.o: CMakeFiles/xenon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/xenon.dir/construction.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/xenon.dir/construction.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/xenon.dir/construction.cc.o -MF CMakeFiles/xenon.dir/construction.cc.o.d -o CMakeFiles/xenon.dir/construction.cc.o -c /Users/milokris/Documents/geant4-v11.3-2.2/xenon/construction.cc
 
 CMakeFiles/xenon.dir/construction.cc.i: cmake_force
@@ -145,7 +131,7 @@ CMakeFiles/xenon.dir/construction.cc.s: cmake_force
 CMakeFiles/xenon.dir/detector.cc.o: CMakeFiles/xenon.dir/flags.make
 CMakeFiles/xenon.dir/detector.cc.o: /Users/milokris/Documents/geant4-v11.3-2.2/xenon/detector.cc
 CMakeFiles/xenon.dir/detector.cc.o: CMakeFiles/xenon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/xenon.dir/detector.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/xenon.dir/detector.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/xenon.dir/detector.cc.o -MF CMakeFiles/xenon.dir/detector.cc.o.d -o CMakeFiles/xenon.dir/detector.cc.o -c /Users/milokris/Documents/geant4-v11.3-2.2/xenon/detector.cc
 
 CMakeFiles/xenon.dir/detector.cc.i: cmake_force
@@ -159,7 +145,7 @@ CMakeFiles/xenon.dir/detector.cc.s: cmake_force
 CMakeFiles/xenon.dir/electricField2.cc.o: CMakeFiles/xenon.dir/flags.make
 CMakeFiles/xenon.dir/electricField2.cc.o: /Users/milokris/Documents/geant4-v11.3-2.2/xenon/electricField2.cc
 CMakeFiles/xenon.dir/electricField2.cc.o: CMakeFiles/xenon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/xenon.dir/electricField2.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/xenon.dir/electricField2.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/xenon.dir/electricField2.cc.o -MF CMakeFiles/xenon.dir/electricField2.cc.o.d -o CMakeFiles/xenon.dir/electricField2.cc.o -c /Users/milokris/Documents/geant4-v11.3-2.2/xenon/electricField2.cc
 
 CMakeFiles/xenon.dir/electricField2.cc.i: cmake_force
@@ -173,7 +159,7 @@ CMakeFiles/xenon.dir/electricField2.cc.s: cmake_force
 CMakeFiles/xenon.dir/event.cc.o: CMakeFiles/xenon.dir/flags.make
 CMakeFiles/xenon.dir/event.cc.o: /Users/milokris/Documents/geant4-v11.3-2.2/xenon/event.cc
 CMakeFiles/xenon.dir/event.cc.o: CMakeFiles/xenon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/xenon.dir/event.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/xenon.dir/event.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/xenon.dir/event.cc.o -MF CMakeFiles/xenon.dir/event.cc.o.d -o CMakeFiles/xenon.dir/event.cc.o -c /Users/milokris/Documents/geant4-v11.3-2.2/xenon/event.cc
 
 CMakeFiles/xenon.dir/event.cc.i: cmake_force
@@ -187,7 +173,7 @@ CMakeFiles/xenon.dir/event.cc.s: cmake_force
 CMakeFiles/xenon.dir/generator.cc.o: CMakeFiles/xenon.dir/flags.make
 CMakeFiles/xenon.dir/generator.cc.o: /Users/milokris/Documents/geant4-v11.3-2.2/xenon/generator.cc
 CMakeFiles/xenon.dir/generator.cc.o: CMakeFiles/xenon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/xenon.dir/generator.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/xenon.dir/generator.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/xenon.dir/generator.cc.o -MF CMakeFiles/xenon.dir/generator.cc.o.d -o CMakeFiles/xenon.dir/generator.cc.o -c /Users/milokris/Documents/geant4-v11.3-2.2/xenon/generator.cc
 
 CMakeFiles/xenon.dir/generator.cc.i: cmake_force
@@ -201,7 +187,7 @@ CMakeFiles/xenon.dir/generator.cc.s: cmake_force
 CMakeFiles/xenon.dir/nestFile.cc.o: CMakeFiles/xenon.dir/flags.make
 CMakeFiles/xenon.dir/nestFile.cc.o: /Users/milokris/Documents/geant4-v11.3-2.2/xenon/nestFile.cc
 CMakeFiles/xenon.dir/nestFile.cc.o: CMakeFiles/xenon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/xenon.dir/nestFile.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/xenon.dir/nestFile.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/xenon.dir/nestFile.cc.o -MF CMakeFiles/xenon.dir/nestFile.cc.o.d -o CMakeFiles/xenon.dir/nestFile.cc.o -c /Users/milokris/Documents/geant4-v11.3-2.2/xenon/nestFile.cc
 
 CMakeFiles/xenon.dir/nestFile.cc.i: cmake_force
@@ -215,7 +201,7 @@ CMakeFiles/xenon.dir/nestFile.cc.s: cmake_force
 CMakeFiles/xenon.dir/physics.cc.o: CMakeFiles/xenon.dir/flags.make
 CMakeFiles/xenon.dir/physics.cc.o: /Users/milokris/Documents/geant4-v11.3-2.2/xenon/physics.cc
 CMakeFiles/xenon.dir/physics.cc.o: CMakeFiles/xenon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/xenon.dir/physics.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/xenon.dir/physics.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/xenon.dir/physics.cc.o -MF CMakeFiles/xenon.dir/physics.cc.o.d -o CMakeFiles/xenon.dir/physics.cc.o -c /Users/milokris/Documents/geant4-v11.3-2.2/xenon/physics.cc
 
 CMakeFiles/xenon.dir/physics.cc.i: cmake_force
@@ -229,7 +215,7 @@ CMakeFiles/xenon.dir/physics.cc.s: cmake_force
 CMakeFiles/xenon.dir/run.cc.o: CMakeFiles/xenon.dir/flags.make
 CMakeFiles/xenon.dir/run.cc.o: /Users/milokris/Documents/geant4-v11.3-2.2/xenon/run.cc
 CMakeFiles/xenon.dir/run.cc.o: CMakeFiles/xenon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/xenon.dir/run.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/xenon.dir/run.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/xenon.dir/run.cc.o -MF CMakeFiles/xenon.dir/run.cc.o.d -o CMakeFiles/xenon.dir/run.cc.o -c /Users/milokris/Documents/geant4-v11.3-2.2/xenon/run.cc
 
 CMakeFiles/xenon.dir/run.cc.i: cmake_force
@@ -243,7 +229,7 @@ CMakeFiles/xenon.dir/run.cc.s: cmake_force
 CMakeFiles/xenon.dir/stepping.cc.o: CMakeFiles/xenon.dir/flags.make
 CMakeFiles/xenon.dir/stepping.cc.o: /Users/milokris/Documents/geant4-v11.3-2.2/xenon/stepping.cc
 CMakeFiles/xenon.dir/stepping.cc.o: CMakeFiles/xenon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/xenon.dir/stepping.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/xenon.dir/stepping.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/xenon.dir/stepping.cc.o -MF CMakeFiles/xenon.dir/stepping.cc.o.d -o CMakeFiles/xenon.dir/stepping.cc.o -c /Users/milokris/Documents/geant4-v11.3-2.2/xenon/stepping.cc
 
 CMakeFiles/xenon.dir/stepping.cc.i: cmake_force
@@ -257,7 +243,7 @@ CMakeFiles/xenon.dir/stepping.cc.s: cmake_force
 CMakeFiles/xenon.dir/tracking.cc.o: CMakeFiles/xenon.dir/flags.make
 CMakeFiles/xenon.dir/tracking.cc.o: /Users/milokris/Documents/geant4-v11.3-2.2/xenon/tracking.cc
 CMakeFiles/xenon.dir/tracking.cc.o: CMakeFiles/xenon.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/xenon.dir/tracking.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/xenon.dir/tracking.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/xenon.dir/tracking.cc.o -MF CMakeFiles/xenon.dir/tracking.cc.o.d -o CMakeFiles/xenon.dir/tracking.cc.o -c /Users/milokris/Documents/geant4-v11.3-2.2/xenon/tracking.cc
 
 CMakeFiles/xenon.dir/tracking.cc.i: cmake_force
@@ -271,7 +257,6 @@ CMakeFiles/xenon.dir/tracking.cc.s: cmake_force
 # Object files for target xenon
 xenon_OBJECTS = \
 "CMakeFiles/xenon.dir/xenon.cc.o" \
-"CMakeFiles/xenon.dir/ElectricField.cc.o" \
 "CMakeFiles/xenon.dir/FastS2Model.cc.o" \
 "CMakeFiles/xenon.dir/action.cc.o" \
 "CMakeFiles/xenon.dir/construction.cc.o" \
@@ -289,7 +274,6 @@ xenon_OBJECTS = \
 xenon_EXTERNAL_OBJECTS =
 
 xenon: CMakeFiles/xenon.dir/xenon.cc.o
-xenon: CMakeFiles/xenon.dir/ElectricField.cc.o
 xenon: CMakeFiles/xenon.dir/FastS2Model.cc.o
 xenon: CMakeFiles/xenon.dir/action.cc.o
 xenon: CMakeFiles/xenon.dir/construction.cc.o
@@ -346,7 +330,7 @@ xenon: /usr/local/lib/libG4zlib.dylib
 xenon: /usr/local/lib/libG4ptl.3.0.0.dylib
 xenon: /Users/milokris/Documents/nest/build/libNESTCore.a
 xenon: CMakeFiles/xenon.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable xenon"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable xenon"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/xenon.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

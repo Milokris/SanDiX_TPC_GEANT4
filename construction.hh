@@ -10,7 +10,6 @@
 #include "G4SystemOfUnits.hh"
 #include "G4Tubs.hh"
 #include "G4VisAttributes.hh"
-//#include "ElectricField.hh"
 #include "G4FieldManager.hh"
 #include "G4EqMagElectricField.hh"
 #include "G4ClassicalRK4.hh"

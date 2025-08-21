@@ -5,6 +5,8 @@
 #include "G4OpticalPhoton.hh"
 #include "G4AnalysisManager.hh"
 #include "G4RunManager.hh"
+#include "G4SystemOfUnits.hh"
+
 
 class MySensitiveDetector : public G4VSensitiveDetector
 {

@@ -27,7 +27,6 @@ public:
 
     ~LXeElectronDriftModel() override {}
 
-    // --- Corrected function signatures ---
     G4bool IsApplicable(const G4ParticleDefinition& particle) override {
         return &particle == G4Electron::ElectronDefinition();
     }
@@ -35,7 +34,7 @@ public:
     G4bool ModelTrigger(const G4FastTrack& fastTrack) override {
         const DriftElectronInfo* info =
             dynamic_cast<const DriftElectronInfo*>(fastTrack.GetPrimaryTrack()->GetUserInformation());
-        return info && info->IsDrift();  // <-- use the actual method name in your DriftElectronInfo
+        return info && info->IsDrift(); 
     }
 
 
@@ -48,7 +47,7 @@ private:
         return (Efield > ElThreshold);
     }
 
-    double ElThreshold = 412000.; // set according to your stepping.cc
+    double ElThreshold = 412000.; 
     nestPart* nestDetector;  // pointer to the nestPart detector
 
 };

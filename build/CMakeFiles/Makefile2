@@ -86,12 +86,12 @@ clean: CMakeFiles/Xenon_Simulation.dir/clean
 CMakeFiles/xenon.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/xenon.dir/build.make CMakeFiles/xenon.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/xenon.dir/build.make CMakeFiles/xenon.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target xenon"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target xenon"
 .PHONY : CMakeFiles/xenon.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/xenon.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/xenon.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles 0
 .PHONY : CMakeFiles/xenon.dir/rule
@@ -103,7 +103,7 @@ xenon: CMakeFiles/xenon.dir/rule
 # codegen rule for target.
 CMakeFiles/xenon.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/xenon.dir/build.make CMakeFiles/xenon.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Finished codegen for target xenon"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Finished codegen for target xenon"
 .PHONY : CMakeFiles/xenon.dir/codegen
 
 # clean rule for target.
@@ -123,7 +123,7 @@ CMakeFiles/Xenon_Simulation.dir/all: CMakeFiles/xenon.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Xenon_Simulation.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Xenon_Simulation.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/milokris/Documents/geant4-v11.3-2.2/xenon/build/CMakeFiles 0
 .PHONY : CMakeFiles/Xenon_Simulation.dir/rule

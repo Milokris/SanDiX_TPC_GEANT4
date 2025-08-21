@@ -26,11 +26,6 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
     G4Material *worldMat = nist->FindOrBuildMaterial("G4_AIR"); // G4_Galactic or G4_AIR
     G4MaterialPropertiesTable* mptAir = new G4MaterialPropertiesTable();
 
-    //const G4int nEntries = 2;
-    //G4double photonEnergy[nEntries] = {1.55*eV, 10.0*eV}; 
-    //G4double rIndexAir[nEntries] = {1.0003, 1.0003};
-    //mptAir->AddProperty("RINDEX", photonEnergy, rIndexAir, nEntries);
-
     std::vector<G4double> Air_RINDEX(N_E, 1.0003);
     std::vector<G4double> airAbsLength(N_E, 10.*m); 
     mptAir->AddProperty("RINDEX", E.data(), Air_RINDEX.data(), N_E);
@@ -44,7 +39,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 
     G4Box *solidWorld = new G4Box("solidWorld", 200*mm, 200*mm, 200*mm);
 
-    G4LogicalVolume *logicWorld = new G4LogicalVolume(solidWorld, worldMat, "logicWorld"); //using xenon instead of worldMat
+    G4LogicalVolume *logicWorld = new G4LogicalVolume(solidWorld, worldMat, "logicWorld");
     logicWorld->SetVisAttributes(G4VisAttributes::GetInvisible());
     fLogicWorld = logicWorld;
     G4VPhysicalVolume *physWorld = new G4PVPlacement(0, G4ThreeVector(0.,
@@ -58,67 +53,25 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
     xenonMPT->AddProperty("RINDEX",    &E[0], &LXe_RINDEX[0], N_E);
     xenonMPT->AddProperty("RAYLEIGH",  &E[0], &LXe_RAYLEIGH[0], N_E);
     xenonMPT->AddProperty("ABSLENGTH", &E[0], &LXe_ABS[0],      N_E);   
-    //G4double rIndexXenon[nEntries] = {1.7, 1.7}; 
-    //xenonMPT->AddProperty("RINDEX", photonEnergy, rIndexXenon, nEntries);
     xenonMPT->AddConstProperty("SCINTILLATIONYIELD", 0.0);
-
     xenon->SetMaterialPropertiesTable(xenonMPT);
-
-    for (auto comp : { kSCINTILLATIONCOMPONENT1, kSCINTILLATIONCOMPONENT2, kSCINTILLATIONCOMPONENT3 }) {
-        if (xenonMPT->GetProperty(comp)) {
-            G4cout << comp << " exists!" << G4endl;
-        } else {
-            G4cout << comp << " NOT found" << G4endl;
-        }
-    }
-
-
-//     std::vector<G4double> ScintphotonEnergy = {0.0 *eV, 0.0 *eV}; //{7.0 * eV, 7.5 * eV};
-//     std::vector<G4double> scintYield = {0.0, 0.0}; //{1.0, 1.0};
-//     xenonMPT->AddProperty("SCINTILLATIONCOMPONENT1", ScintphotonEnergy, scintYield);
-// // Scintillation yield
-//     xenonMPT->AddConstProperty("SCINTILLATIONYIELD", 0);//1000./MeV);  // or measured value
-// //include electric field into scintillation yield?
-//     xenonMPT->AddConstProperty("RESOLUTIONSCALE", 1.0);
-//     xenonMPT->AddConstProperty("SCINTILLATIONTIMECONSTANT1", 27.*ns, true);
-//     xenonMPT->AddConstProperty("SCINTILLATIONYIELD1", 0);//1.0);  // all light in 1st component
-//     xenonMPT->AddConstProperty("ELECTRONMOBILITY", 1.5e6 * mm2/volt/s, true);  
-//     xenonMPT->AddConstProperty("ELECTRONLIFETIME", 3.0 * ms, true);
-
-
-    G4MaterialPropertiesTable* mpt = xenon->GetMaterialPropertiesTable();
-    if (mpt) {
-        G4cout << "=== Xenon Material Properties Table ===" << G4endl;
-        mpt->DumpTable();
-    } else {
-        G4cout << "No material properties table set for xenon!" << G4endl;
-    }
-
 
     G4double xenonRadius = 25*mm; 
     G4double xenonHalfHeight = 50*mm;
-
 
     G4Tubs *xenonChamber = new G4Tubs("xenonChamber", 0, xenonRadius, xenonHalfHeight + 9*mm, 0.*deg, 360.*deg);
     G4LogicalVolume *logicChamber = new G4LogicalVolume(xenonChamber, xenon, "logicChamber");
     G4VPhysicalVolume *physChamber = new G4PVPlacement(0, G4ThreeVector(0, 0, 0), logicChamber, "physicalChamber", 
 logicWorld, false, 0, checkOverlaps);
-    auto xeVis = new G4VisAttributes(G4Colour(0.0, 0.0, 1.00, 0.75));  // blue, 75% opacity
+    auto xeVis = new G4VisAttributes(G4Colour(0.0, 0.0, 1.00, 0.0));  // blue, 75% opacity //just made invisible for presentation
     xeVis->SetForceSolid(true);
     logicChamber->SetVisAttributes(xeVis);
 
-    static ElectricField2* electricField = new ElectricField2();
-
-    // G4Region* chamberRegion = new G4Region("ChamberRegion");
-    // logicChamber->SetRegion(chamberRegion);
-    // chamberRegion->AddRootLogicalVolume(logicChamber);
-    // new FastS2Model("S2FastSim", chamberRegion, electricField);
 
     G4ProductionCuts* cuts = new G4ProductionCuts();
     cuts->SetProductionCut(0.001*mm, "e-"); //should be around .001 *mm
-    //chamberRegion->SetProductionCuts(cuts);
 
-    // G4UserLimits* limits = new G4UserLimits(.01*mm);
+
     logicChamber->SetUserLimits(new DynamicUserLimits(10*mm, 0.1*um)); //min step size 0.1 micron
 
     G4Region* fastRegion = new G4Region("LXeFastRegion");
@@ -135,9 +88,7 @@ logicWorld, false, 0, checkOverlaps);
     steel304->AddElement(nist->FindOrBuildElement("Fe"), 70.*perCent);
     steel304->AddElement(nist->FindOrBuildElement("Cr"), 18.*perCent);
     steel304->AddElement(nist->FindOrBuildElement("Ni"), 12.*perCent);
-    //G4double rIndexSteel[nEntries] = {2.5, 2.5};  // Approximate placeholder
     G4MaterialPropertiesTable* mptSteel = new G4MaterialPropertiesTable();
-    //mptSteel->AddProperty("RINDEX", photonEnergy, rIndexSteel, nEntries);
 
     std::vector<G4double> STEEL_REFLECT(N_E, 0.30); //0.3 is default but i do not have data on this for SanDiX
     mptSteel->AddProperty("REFLECTIVITY", &E[0], &STEEL_REFLECT[0], N_E);
@@ -165,22 +116,12 @@ logicFrame, "physicalFrame2", logicWorld, false, 0, true);
     steelVis->SetForceSolid(true);
     logicFrame->SetVisAttributes(steelVis);
 
-    G4MaterialPropertiesTable* mpt2 = steel304->GetMaterialPropertiesTable();
-    if (mpt2) {
-        G4cout << "=== Steel Material Properties Table ===" << G4endl;
-        mpt2->DumpTable();
-    } else {
-        G4cout << "No material properties table set for Steel!" << G4endl;
-    }
-
     new G4LogicalSkinSurface("SteelSkin", logicFrame, steelSurf);
 
 
 //Teflon Container
     G4Material* teflon = nist->FindOrBuildMaterial("G4_TEFLON");
-    //G4double rIndexTeflon[nEntries] = {1.35, 1.35};
     G4MaterialPropertiesTable* mptTeflon = new G4MaterialPropertiesTable();
-    // mptTeflon->AddProperty("RINDEX", photonEnergy, rIndexTeflon, nEntries);
     std::vector<G4double> PTFE_RINDEX(N_E, 1.575);
     std::vector<G4double> PTFE_ABS(N_E, 1.*mm);
     mptTeflon->AddProperty("RINDEX",    &E[0], &PTFE_RINDEX[0], N_E);
@@ -253,13 +194,6 @@ G4ThreeVector(0, 0, 0));
     logicCap1->SetVisAttributes(visTeflon);
     logicCap2->SetVisAttributes(visTeflon);
 
-    G4MaterialPropertiesTable* mpt3 = teflon->GetMaterialPropertiesTable();
-    if (mpt3) {
-        G4cout << "=== Teflon Material Properties Table ===" << G4endl;
-        mpt3->DumpTable();
-    } else {
-        G4cout << "No material properties table set for Teflon!" << G4endl;
-    }
 
     new G4LogicalSkinSurface("PTFE_Skin", logicCap1, ptfeSurf);
     new G4LogicalSkinSurface("PTFE_Skin", logicCap2, ptfeSurf);
@@ -294,7 +228,7 @@ G4ThreeVector(0, 0, 0));
 
 
     G4double PmtHalfLength = 10.25*mm;
-    G4double PmtHalfWidth = 5.0*mm; //14.125*mm;
+    G4double PmtHalfWidth = 5.0*mm;
 
     G4ThreeVector Pos1(xenonRadius + PmtHalfWidth, 0, xenonHalfHeight/2);
     G4ThreeVector Pos2(0, xenonRadius + PmtHalfWidth, xenonHalfHeight/2);
@@ -307,7 +241,7 @@ G4ThreeVector(0, 0, 0));
     G4RotationMatrix* rot90 = new G4RotationMatrix();
     rot90->rotateZ(90 * deg);
     G4Box *solidDetector = new G4Box("solidDetector", PmtHalfWidth, PmtHalfLength, PmtHalfLength);
-    logicDetector = new G4LogicalVolume(solidDetector, worldMat, "logicDetector"); //using xenon instead of worldMat
+    logicDetector = new G4LogicalVolume(solidDetector, worldMat, "logicDetector"); 
     G4VPhysicalVolume *physDetector = new G4PVPlacement(0, Pos1, logicDetector, "physDetector", logicWorld, false, 1, checkOverlaps);
     new G4LogicalBorderSurface("LXe_to_PMT1", physChamber, physDetector, pmtSurface);
     new G4LogicalBorderSurface("PMT_to_LXe1", physDetector, physChamber, pmtSurface);
@@ -402,17 +336,6 @@ G4ThreeVector(0, 0, 0));
     auto localFieldManager = new G4FieldManager(electricField2);
     localFieldManager->SetDetectorField(electricField2);
 
-
-                              // Relative accuracy values:
-    //G4double minEps= 1.0e-5;  //   Minimum & value for largest steps
-    //G4double maxEps= 1.0e-4;  //   Maximum & value for smallest steps
-
-    //globalFieldManager->SetMinimumEpsilonStep( minEps );
-    //globalFieldManager->SetMaximumEpsilonStep( maxEps );
-    //globalFieldManager->SetDeltaOneStep( 0.5e-3 * mm );  // 0.5 micrometer
-
-
-
     G4double minStep = 0.001*mm;
     auto pIntegrationDriver = new G4IntegrationDriver<G4DormandPrince745>(minStep, pStepper, nvar);
 
@@ -420,8 +343,8 @@ G4ThreeVector(0, 0, 0));
     globalFieldManager->SetChordFinder(chordFinder2);
     localFieldManager->SetChordFinder(chordFinder2);
 
-    //G4TransportationManager::GetTransportationManager()->SetFieldManager(globalFieldManager);
 
+//choose whether electric field everywhere or only in xenon chamber
 
     //logicChamber->SetFieldManager(localFieldManager, true);
     logicWorld->SetFieldManager(globalFieldManager, true);
@@ -440,8 +363,4 @@ void MyDetectorConstruction::ConstructSDandField()
    MySensitiveDetector *sensDet = new MySensitiveDetector("SensitiveDetector");
        
     logicDetector->SetSensitiveDetector(sensDet);
-    // auto electricField = new ElectricField();
-    // auto fieldManager = G4TransportationManager::GetTransportationManager()->GetFieldManager();
-    // fLogicWorld->SetFieldManager(fieldManager, true);  // Apply to world and all daughters
-
 }

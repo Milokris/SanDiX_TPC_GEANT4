@@ -15,8 +15,6 @@ void ElectricField2::GetFieldValue(const G4double Point[4], G4double *field) con
     G4double y = Point[1] / 10;
     G4double z = Point[2] / 10;
 
-
-
     // Get electric field at this position from nestDetector
     double Efield = detector.get_ElectricField(x, y, z);
     double r = std::sqrt(x*x + y*y);
@@ -29,9 +27,7 @@ void ElectricField2::GetFieldValue(const G4double Point[4], G4double *field) con
     field[3] = x_part * Efield *volt/cm;
     field[4] = y_part * Efield *volt/cm;
 
-    field[5] = 0; //-1000. * volt/cm;
-
-    //G4cout << "Position: ( " << x << ", " << y << ", " << z << ").  " << "Electric field: ( " << field[3] << ", " << field[4] << ", " << field[5] << ")" << G4endl;
+    field[5] = 0; 
 }
 
 G4bool ElectricField2::DoesFieldChangeEnergy() const

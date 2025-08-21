@@ -11,6 +11,7 @@ extern int nS1Events;
 extern int nS2Events;
 extern int totalS1Photons;
 extern int totalS2Photons;
+extern int incidentRecoilType;
 
 class MyRunAction : public G4UserRunAction
 {
