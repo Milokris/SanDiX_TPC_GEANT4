@@ -1,0 +1,16 @@
+/vis/open OGLIQt
+/vis/viewer/set/viewpointVector 1 1 1
+/vis/viewer/set/upVector 0 0 1
+/vis/drawVolume
+/vis/viewer/zoom 1.0
+/vis/viewer/set/autoRefresh true
+/vis/scene/add/trajectories smooth
+/vis/scene/add/eventID
+/vis/scene/endOfEventAction accumulate
+/vis/modeling/trajectories/create/drawByParticleID
+/vis/modeling/trajectories/drawByParticleID-0/set neutron yellow
+/vis/modeling/trajectories/drawByParticleID-0/set e- red
+/vis/modeling/trajectories/drawByParticleID-0/set proton blue
+/vis/modeling/trajectories/drawByParticleID-0/set e+ orange
+/vis/modeling/trajectories/drawByParticleID-0/set opticalphoton cyan
+/vis/modeling/trajectories/drawByParticleID-0/setRGBA opticalphoton 1. 0 0 0

@@ -1,0 +1,4 @@
+/gps/particle ion
+/gps/ion 86 220 0 0
+/gps/pos/type Volume
+/gps/pos/confine physChamber

@@ -1,0 +1,53 @@
+#/gps/ang/type beam1d
+#/gps/direction -1 0 0
+/gps/ang/type iso
+/gps/ene/type Lin
+/gps/ene/gradient 0
+/gps/ene/intercept 1
+
+
+# --- Particle type ---  REMEMBER TO CHANGE ROOT FILE IN RUN.CC
+
+#/gps/particle neutron
+#/gps/pos/centre 25 1 0 mm #50 1 0 mm
+#/gps/ene/min 1.0 MeV
+#/gps/ene/max 3.75 MeV
+
+/gps/particle gamma
+/gps/pos/centre 19 0 0 mm
+/gps/ene/min 1.0 keV #1.0
+/gps/ene/max 20.0 keV #20.0
+
+#/gps/particle e-
+#/gps/pos/centre 18 0 0 mm
+#/gps/ene/min 1.0 keV
+#/gps/ene/max 10.0 keV
+
+
+# Monoenergetic
+#/gps/ene/type Mono
+#/gps/ene/mono .662 MeV #.662 or 2.45
+
+#/gps/particle ion
+#/gps/ion 86 220 0 0.0
+
+#/gps/pos/type Volume
+#/gps/pos/shape Sphere
+#/gps/pos/radius 500 mm       # adjust to fully contain your chamber
+#/gps/pos/confine physicalChamber
+
+#/gps/energy 0 eV             # ions are created at rest; Geant4 handles decay
+#/gps/ang/type iso
+
+
+
+
+
+#---------------AmBe source from Erick---------------
+#toggle on or off for neutron AmBe spectrum
+
+#/control/execute spectrum.mac
+
+
+
+/run/beamOn 1 #For large statistics, did 500000 for neutrons and 5000 for gammas #was 1000000

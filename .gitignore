@@ -1,0 +1,29 @@
+# Build products
+/build/
+/cmake-build-*/
+/CMakeFiles/
+/CMakeCache.txt
+/Makefile
+/cmake_install.cmake
+/compile_commands.json
+
+# Simulation and analysis output
+*.root
+*.csv
+event.json
+snapshot.png
+_web_run.mac
+
+# Compiled objects and executables
+*.o
+*.d
+*.so
+*.dylib
+*.a
+/sandix
+
+# Local editor and operating-system files
+.DS_Store
+.vscode/
+.idea/
+*~
